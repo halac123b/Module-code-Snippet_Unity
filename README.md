@@ -8,3 +8,4 @@ Table of content to look up on branches: <br>
 4. Fluid Simulation <br>
 5. Reference asset by code <br>
 6. Video player <br>
+7. Implement multiple spells from one ScriptableObject class <br>
