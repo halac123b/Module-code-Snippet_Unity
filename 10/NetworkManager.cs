@@ -13,7 +13,7 @@ public class NetworkManager : MonoBehaviour
     private IEnumerator MakeRequests()
     {
         // GET
-        UnityWebRequest getRequest = CreateRequest("https://jsonplaceholder.typicode.com/todos/1");
+        UnityWebRequest getRequest = CreateRequest("Get_api_url");
         // Đợi trong khi request đc gửi đi và xử lí
         yield return getRequest.SendWebRequest();
         // Lấy phần data đc response từ downloadHandler.text, sau đó convert sang GameObject
@@ -21,7 +21,9 @@ public class NetworkManager : MonoBehaviour
 
         // POST
         var dataToPost = new DataJson() { data = "John Wick", length = 9001 };
-        UnityWebRequest postRequest = CreateRequest("https://reqbin.com/echo/post/json", RequestType.POST, dataToPost);
+        UnityWebRequest postRequest = CreateRequest("Post_api_url", RequestType.POST, dataToPost);
+        yield return postRequest.SendWebRequest();
+        var deserializedPostData = JsonUtility.FromJson<DataJson>(postRequest.downloadHandler.text);
     }
 
     // Chuẩn bị đầy đủ các thành phần cho 1 request
