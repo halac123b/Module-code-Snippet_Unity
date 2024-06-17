@@ -3,7 +3,10 @@ using UnityEngine;
 using UnityEngine.Networking;
 using System.Text;
 
-public class NetworkManager : MonoBehaviour
+/// <summary>
+/// This approach create a request, specify its upload data and method, then send
+/// </summary>
+public class SendWebRequest : MonoBehaviour
 {
     private void Start()
     {
@@ -13,17 +16,31 @@ public class NetworkManager : MonoBehaviour
     private IEnumerator MakeRequests()
     {
         // GET
-        UnityWebRequest getRequest = CreateRequest("Get_api_url");
-        // Đợi trong khi request đc gửi đi và xử lí
-        yield return getRequest.SendWebRequest();
-        // Lấy phần data đc response từ downloadHandler.text, sau đó convert sang GameObject
-        DataJson deserializedGetData = JsonUtility.FromJson<DataJson>(getRequest.downloadHandler.text);
+        // Use "using" statement, because when create Web request, some resources are allocated
+        //// Socket for connection, buffer for transfer data, memory,..
+        using (UnityWebRequest getRequest = CreateRequest("Get_api_url"))
+        {
+            // Đợi trong khi request đc gửi đi và xử lí
+            yield return getRequest.SendWebRequest();
+
+            // Handle error
+            // ConnectionError: k connect đc server (lỗi mạng, k establish đc secure channel)
+            // ProtocolError: lỗi đc server gửi về liên quan protocol
+            if (getRequest.result == UnityWebRequest.Result.ConnectionError || getRequest.result == UnityWebRequest.Result.ProtocolError)
+            {
+                Debug.Log($"ERROR {getRequest.error} {getRequest.result}")
+            }
+            // Lấy phần data đc response từ downloadHandler.text, sau đó convert sang GameObject
+            DataJson deserializedGetData = JsonUtility.FromJson<DataJson>(getRequest.downloadHandler.text);
+        }
 
         // POST
         var dataToPost = new DataJson() { data = "John Wick", length = 9001 };
-        UnityWebRequest postRequest = CreateRequest("Post_api_url", RequestType.POST, dataToPost);
-        yield return postRequest.SendWebRequest();
-        var deserializedPostData = JsonUtility.FromJson<DataJson>(postRequest.downloadHandler.text);
+        using (UnityWebRequest postRequest = CreateRequest("Post_api_url", RequestType.POST, dataToPost))
+        {
+            yield return postRequest.SendWebRequest();
+            var deserializedPostData = JsonUtility.FromJson<DataJson>(postRequest.downloadHandler.text);
+        }
     }
 
     // Chuẩn bị đầy đủ các thành phần cho 1 request
