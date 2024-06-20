@@ -28,7 +28,7 @@ public class SendWebRequest : MonoBehaviour
             // ProtocolError: lỗi đc server gửi về liên quan protocol
             if (getRequest.result == UnityWebRequest.Result.ConnectionError || getRequest.result == UnityWebRequest.Result.ProtocolError)
             {
-                Debug.Log($"ERROR {getRequest.error} {getRequest.result}")
+                Debug.Log($"ERROR {getRequest.error} {getRequest.result}");
             }
             // Lấy phần data đc response từ downloadHandler.text, sau đó convert sang GameObject
             DataJson deserializedGetData = JsonUtility.FromJson<DataJson>(getRequest.downloadHandler.text);

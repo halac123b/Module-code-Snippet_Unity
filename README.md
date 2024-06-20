@@ -12,3 +12,4 @@ Table of content to look up on branches: <br>
 8. JsonUtility, tool of Unity to handle Json data <br>
 9. StateMachine <br>
 10. Send UnityWebRequest <br>
+11. **TextMeshPro** package
