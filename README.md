@@ -19,3 +19,8 @@ Table of content to look up on branches: <br>
 15. **Trilib** package
 16. **UnityEngine** package: **Application** class
 17. **UniTask** package
+18. **NaughtyAttributes** package
+19. **UnityEngine** package: **Caching** class
+20. **UnityEditor** package: **AssetDatabase** class
+21. **DG.Tweening** packge
+22. **GoogleMobileAds** package
