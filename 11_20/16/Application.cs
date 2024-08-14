@@ -13,5 +13,8 @@ public class ApplicationClass
     // Path đến nơi chứa data về app đc giữ lại và duy trì sau nhiều lần mở app
     /// Windows: AppData/LocalLow
     Debug.Log(Application.persistentDataPath);
+
+    // Set fps cho game, Unity sẽ cố để render đúng tỉ lệ này
+    Application.targetFrameRate = 60;
   }
 }
