@@ -14,6 +14,9 @@ public class ApplicationClass
     /// Windows: AppData/LocalLow
     Debug.Log(Application.persistentDataPath);
 
+    // String: version hiện tại của app (1.0.0)
+    Debug.Log(Application.version);
+
     // Set fps cho game, Unity sẽ cố để render đúng tỉ lệ này
     Application.targetFrameRate = 60;
   }
