@@ -24,5 +24,6 @@ Table of content to look up on branches: <br>
 20. **UnityEditor** package: **AssetDatabase** class
 21. **DG.Tweening** packge
 22. **GoogleMobileAds** package
-23. **UnityEngine** package: another small class
+23. **UnityEngine** package: other small classes
 24. **UnityEngine.Android** package
+25. **HelpShift** package
