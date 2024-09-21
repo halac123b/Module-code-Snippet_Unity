@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using System;
 
-public abstract class BaseState<EState>
+public abstract class BaseState<EState> where EState : Enum
 {
     public abstract void EnterState();
     public abstract void ExitState();
