@@ -27,3 +27,4 @@ Table of content to look up on branches: <br>
 23. **UnityEngine** package: other small classes
 24. **UnityEngine.Android** package
 25. **HelpShift** package
+26. **Unity.Notifications** package
