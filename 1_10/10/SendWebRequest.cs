@@ -43,12 +43,14 @@ public class SendWebRequest : MonoBehaviour
         }
     }
 
-    private void RequestImage(string path){
+    private void RequestImage(string path)
+    {
         // UnityWebRequestTexture: a special function to make request about texture
         /// Get texture: get image bY a GET request
         using (using (UnityWebRequest www = UnityWebRequestTexture.GetTexture(URL_FORMAT + id))){
             yield return www.SendWebRequest();
-            if (www.result != UnityWebRequest.Result.ConnectionError || www.result != UnityWebRequest.Result.ProtocolError){
+            if (www.result != UnityWebRequest.Result.ConnectionError || www.result != UnityWebRequest.Result.ProtocolError)
+            {
                 // Get the downloaded Texture in Texture2D
                 Texture2D myTexture = ((DownloadHandlerTexture)www.downloadHandler).texture;
             }
