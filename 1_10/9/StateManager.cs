@@ -14,6 +14,24 @@ public abstract class StateManager<EState> : MonoBehaviour where EState : Enum
 
     void Update()
     {
-        CurrentState.UpdateState();
+        EState nextStateKey = CurrentState.GetNextState();
+        if (nextStateKey.Equals(CurrentState.StateKey))
+        {
+            CurrentState.UpdateState();
+        }
+
+    }
+
+    prvivate void OnTriggerEnter(Collider other)
+    {
+        CurrentState.OnTriggerEnter(other);
+    }
+    prvivate void OnTriggerStay(Collider other)
+    {
+        CurrentState.OnTriggerStay(other);
+    }
+    prvivate void OnTriggerExit(Collider other)
+    {
+        CurrentState.OnTriggerExit(other);
     }
 }
